@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.itis.webshop.dto.UserDto;
 import ru.itis.webshop.models.User;
@@ -32,5 +33,10 @@ public class ProfileController {
         User user = userService.findUserById(userId);
         model.addAttribute("basket", user.getBasket());
         return "basket";
+    }
+
+    @PostMapping("/{userId}/baskets/{basketId}")
+    public String createOrder(@PathVariable Long basketId, @PathVariable Long userId, ModelMap model) {
+//
     }
 }

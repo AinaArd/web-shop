@@ -4,18 +4,14 @@
 </head>
 
 <body>
-<#if basket.products??>
-    Products in basket:
-    <#list basket.products as product>
+<#if shop.products??>
+    <#list shop.products as product>
         <ul>
             <li>
                 <a href="/products/${product.id}">${product.name}</a>
             </li>
         </ul>
     </#list>
-    <form method="post" class="form-style-2">
-        <input class="form-style-2" type="submit" value="Order"/>
-    </form>
 </#if>
 </body>
 </html>

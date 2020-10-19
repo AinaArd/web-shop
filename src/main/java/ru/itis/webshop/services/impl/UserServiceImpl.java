@@ -3,9 +3,7 @@ package ru.itis.webshop.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.itis.webshop.dto.UserDto;
-import ru.itis.webshop.models.Basket;
 import ru.itis.webshop.models.User;
-import ru.itis.webshop.repositories.BasketRepository;
 import ru.itis.webshop.repositories.UserRepository;
 import ru.itis.webshop.services.UserService;
 
@@ -43,5 +41,15 @@ public class UserServiceImpl implements UserService {
                 .password(userDto.getPassword())
                 .build();
         return UserDto.from(userRepository.save(newUser));
+    }
+
+    @Override
+    public UserDto signIn(UserDto userDto) {
+        Optional<User> userOptional = userRepository.findByLoginAndPassword(userDto.getLogin(), userDto.getPassword());
+        if (userOptional.isPresent()) {
+            return UserDto.from(userOptional.get());
+        } else {
+            return UserDto.empty();
+        }
     }
 }

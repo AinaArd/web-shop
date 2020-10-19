@@ -8,17 +8,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.itis.webshop.dto.ProductDto;
+import ru.itis.webshop.dto.UserDto;
 import ru.itis.webshop.services.ProductService;
+import ru.itis.webshop.services.UserService;
 
 @Controller
 @RequestMapping("/products")
 public class ProductController {
 
     private ProductService productService;
+    private UserService userService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, UserService userService) {
         this.productService = productService;
+        this.userService = userService;
     }
 
     @GetMapping("/{productId}")
@@ -29,7 +33,10 @@ public class ProductController {
     }
 
     @PostMapping("/{productId}")
-    public String buyProduct(@PathVariable Long productId) {
-        return "redirect:product";
+    public String addToBasket(@PathVariable Long productId) {
+//        перекидывать в корзину
+        UserDto user = userService.getUserDtoById(1L);
+        productService.addProductToBasket(productId, user);
+        return "redirect:/users/" + user.getId() + "/baskets/" + user.getBasket().getId();
     }
 }

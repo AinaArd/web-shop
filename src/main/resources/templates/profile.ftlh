@@ -7,9 +7,14 @@
 <div class="form-style-2-heading">
     ${user.login}
     <br>
-    <div class="form-style-2 .textarea-field">
-        <a href="/users/${user.id}/baskets/${user.basket.id}">Basket</a>
-    </div>
+    <ul>
+        <li>
+            <a href="/users/${user.id}/baskets/${user.basket.id}">Basket</a>
+        </li>
+        <li>
+            <a class="nav-link" href="/shops">Shops</a>
+        </li>
+    </ul>
 </div>
 </body>
 </html>

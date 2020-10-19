@@ -32,6 +32,6 @@ public class SingUpController {
     public String signUpUser(ModelMap model, UserDto userDto) {
         UserDto user = userService.signUp(userDto);
         basketService.setBasketForUser(user);
-        return "redirect:users/" + user.getId();
+        return "redirect:sign-in";
     }
 }

@@ -9,4 +9,6 @@ public interface UserService {
     User findUserById(Long userId);
 
     UserDto signUp(UserDto userDto);
+
+    UserDto signIn(UserDto userDto);
 }
