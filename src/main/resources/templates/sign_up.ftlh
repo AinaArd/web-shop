@@ -17,6 +17,7 @@
         </label>
         <input type="submit" value="Sign Up">
     </form>
+    <a href="/sign-in">Already signed up</a>
 </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package ru.itis.webshop.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.itis.webshop.models.enums.Status;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "\"order\"")
 @Entity
+@Builder
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +23,7 @@ public class Order {
     private Date date;
     private Status status;
     private Double totalPrice;
+    private Integer number;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

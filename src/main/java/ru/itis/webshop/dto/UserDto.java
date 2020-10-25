@@ -17,12 +17,14 @@ public class UserDto {
     private String login;
     private Basket basket;
     private String password;
+    private List<Order> orders;
 
     public static UserDto from(User user) {
         return UserDto.builder()
                 .id(user.getId())
                 .login(user.getLogin())
                 .basket(user.getBasket())
+                .orders(user.getOrders())
                 .build();
     }
 

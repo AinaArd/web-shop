@@ -14,6 +14,7 @@ import ru.itis.webshop.services.UserService;
 @Controller
 @RequestMapping("/users")
 public class ProfileController {
+
     private UserService userService;
 
     @Autowired
@@ -26,17 +27,5 @@ public class ProfileController {
         UserDto user = userService.getUserDtoById(userId);
         model.addAttribute("user", user);
         return "profile";
-    }
-
-    @GetMapping("/{userId}/baskets/{basketId}")
-    public String getBasket(@PathVariable Long basketId, @PathVariable Long userId, ModelMap model) {
-        User user = userService.findUserById(userId);
-        model.addAttribute("basket", user.getBasket());
-        return "basket";
-    }
-
-    @PostMapping("/{userId}/baskets/{basketId}")
-    public String createOrder(@PathVariable Long basketId, @PathVariable Long userId, ModelMap model) {
-//
     }
 }

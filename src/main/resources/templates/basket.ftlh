@@ -4,18 +4,35 @@
 </head>
 
 <body>
-<#if basket.products??>
-    Products in basket:
-    <#list basket.products as product>
-        <ul>
-            <li>
-                <a href="/products/${product.id}">${product.name}</a>
-            </li>
-        </ul>
-    </#list>
-    <form method="post" class="form-style-2">
-        <input class="form-style-2" type="submit" value="Order"/>
+<div class="form-style-2">
+    <#if basket.products??>
+        <#list basket.products as product>
+            Products in basket:
+            <ul>
+                <li>
+                    <a href="/products/${product.id}">${product.name}</a>
+                </li>
+            </ul>
+        </#list>
+    <#else>
+        <img src="/images/empty_basket.jpg">
+    </#if>
+
+    <div class="form-style-2-heading">
+        Fill in your address
+    </div>
+    <form method="post">
+        <label for="country">Country
+            <input class="input-field" type="text" id="country" name="country">
+        </label>
+        <label for="city">City
+            <input class="input-field" type="text" id="city" name="city">
+        </label>
+        <input type="submit" value="Make an order">
     </form>
-</#if>
+</div>
+
+<a href="/users/${basket.user.id}">Profile</a>
+
 </body>
 </html>

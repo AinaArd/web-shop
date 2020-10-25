@@ -34,9 +34,9 @@ public class ProductController {
 
     @PostMapping("/{productId}")
     public String addToBasket(@PathVariable Long productId) {
-//        перекидывать в корзину
+//        TODO: find current user
         UserDto user = userService.getUserDtoById(1L);
         productService.addProductToBasket(productId, user);
-        return "redirect:/users/" + user.getId() + "/baskets/" + user.getBasket().getId();
+        return "redirect:/baskets/" + user.getBasket().getId();
     }
 }

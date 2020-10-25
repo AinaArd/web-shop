@@ -171,3 +171,7 @@
         background-color: transparent;
     }
 }
+
+table.borders {
+    border-spacing: 10px;
+}
